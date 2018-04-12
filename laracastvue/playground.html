@@ -1,0 +1,78 @@
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <div id="root">
+        <input type='text' v-model="message">
+        <p>{{ message }}</p>
+    </div>
+
+    <div id='friends'>
+        <ul v-for="name in names">
+            <li>{{name}}</li>
+        </ul>
+        <input type="text" v-model="newName">
+        <button @click="addFriend">add name</button>
+    </div>
+
+    <style>
+      .show {
+          background-color: blue;
+      }
+
+      .hide {
+          display: none;
+      }
+    </style>
+    <div id='toggle'>
+        <p v-if="seen">Hide and seek</p>
+        <button @click="seen = !seen">toggle me</button>
+    </div>
+
+    <div id="app">
+            <p v-if="seen">Message Can Be Seen!</p>
+            <p><button class="btn btn-lg btn-primary" v-on:click="seen = !seen">Toggle</button></p>
+          </div>
+
+    <script>
+      var root = new Vue ({
+          el: '#root',
+          data: {
+              message: 'hello vue!'
+          }
+      }) 
+
+      var fnames = new Vue ({
+          el: '#friends',
+          data: {
+              names: ['joe', 'tony', 'kenny'],
+              newName: ''
+          },
+          methods: {
+              addFriend() {
+                  this.names.push(this.newName);
+                  this.newName = '';
+              }
+          }
+      })
+
+      var showhide = new Vue ({
+          el : '#toggle',
+          data : {
+              seen : true
+          },
+
+          methods : {
+              onToggle () {
+                this.isShowing = !this.isShowing;
+              }
+          }
+      })
+
+var app = new Vue({
+        el: '#app',
+        data: {
+            seen: true
+        }
+    })
+    </script>
+</html>

@@ -1,0 +1,42 @@
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <div id="todo">
+
+        <h1>ALL TASKS</h1>
+            <ul v-for="task in taskList">
+                <li v-text='task.name'></li>
+            </ul>
+        <h1>COMPLETED TASKS</h1>
+            <ul v-for='task in completeTask'>
+                <input type='checkbox' v-model='task.complete'> <label v-text='task.name'></label>
+            </ul>
+        <h1>INCOMPLETE TASKS</h1>
+            <ul v-for='task in incompleteTask'>
+                <input type='checkbox' v-model='task.complete'> <label v-text='task.name'></label>
+            </ul>
+    </div>
+
+    <script>
+        var todoList = new Vue ({
+            el: "#todo",
+            data: {
+                taskList:[
+                    { id: 0, name: 'reading', complete: true },
+                    { id: 1, name: 'programming', complete: false },
+                    { id: 2, name: 'gaming', complete: false },
+                    { id: 3, name: 'communication', complete: true}
+                ]
+            },
+            computed: {
+                incompleteTask() {
+                    return this.taskList.filter(task=> !task.complete)
+                },
+
+                completeTask() {
+                    return this.taskList.filter(task=> task.complete)
+                }
+            }
+        })
+    </script>
+</html>
