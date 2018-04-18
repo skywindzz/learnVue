@@ -1,0 +1,36 @@
+<html>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css">
+<body>
+<div id="root">
+  <ul v-for="(animal, i) in animals">
+    <li >{{ animal }} says {{ sound[i] }}</li>
+  </ul>
+  <button v-on:click.capture="doThis">...</button>
+  
+  <div class="outer">
+    <div class="middle">
+        <div id="capture" class="inner" v-on:click.once.capture="doThis"> test </div>
+    </div>
+</div>
+</div>
+
+
+<script>
+
+new Vue ({
+	el: "#root",
+  data: {
+  	animals: ['dog', 'cat', 'pigs'],
+    sound: ['woof', 'meow','orc']
+  },
+  methods: {
+  	doThis: function () {
+        document.getElementById('capture').innerHtml = "one";
+        console.log('clicked')
+    }
+  }
+})
+</script>
+</body>
+</html>

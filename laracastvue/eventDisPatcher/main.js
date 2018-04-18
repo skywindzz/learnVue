@@ -1,6 +1,5 @@
 window.Event = new Vue();
 
-
 Vue.component('communicate', {
     template: `<input placeholder="Enter your coupon code" @blur="sendingMessage">`,
     methods: {
