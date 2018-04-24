@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@2.0.5/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <input @input="changeMessage">
+            <p>{{ message }}</p>
+        </div>
+        
+        
+        <script>
+            new Vue({
+                el: "#root",
+                data: {
+                    message: "hello vue"
+                },
+                methods: {
+                    changeMessage() {
+                        this.message = event.target.value;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
