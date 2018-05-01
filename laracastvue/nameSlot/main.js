@@ -20,8 +20,8 @@ Vue.component('name-slot', {
         </footer>
         </div>
     </div>`
-})
+});
 
 new Vue({
     el:"#root"
-})
+});

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@2.0.5/dist/vue.js"></script>
+        <title>Dynamic CSS</title>
+    </head>
+    <body>
+        <div id="root">
+            <!--inline style-->
+            <div class="demo" :style='{ backgroundColor: "red" }'></div>
+            <!-- dynamic style -->
+            <div class="demo" :style='myColor'></div>
+            <!-- object style -->
+            <div class="demo" :style="[staticColor, { height: width + 'px'} ]"></div>
+
+            <div>
+                <label>Color :  <input type="text" class='input' v-model="color"></label>        
+                <label>Width :  <input type="number" class='input' v-model="width"></label>
+            </div>
+        </div>
+
+       
+        
+        
+        <script>
+            new Vue({
+                el: "#root",
+
+                data: {
+                  color: 'gray',
+                  width: 100,
+                  staticColor: {
+                      backgroundColor: 'yellow'
+                  },
+                  colorText: 'color'
+                },
+
+                computed: {
+                  myColor: function () {
+                      return {
+                        backgroundColor: this.color,
+                        width: this.width + 'px'
+                      }
+                  }
+                }
+            })
+        </script>
+
+        <style>
+            .demo {
+                width: 100px;
+                height: 100px;
+                background-color: gray;
+                display: inline-block;
+                margin: 10px;
+            }
+
+            .third:hover {
+                     background-color: blue;
+            }
+            
+            .input {
+                display: inline-block;
+            }
+        </style>
+    </body>
+</html>

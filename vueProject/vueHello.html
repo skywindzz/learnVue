@@ -8,6 +8,8 @@
         <div id="root">
             <input @input="changeMessage">
             <p>{{ message }}</p>
+            <p>{{ count }}</p>
+            <button v-on:click="addTwo(2)"> Add Two</button>
         </div>
         
         
@@ -15,12 +17,17 @@
             new Vue({
                 el: "#root",
                 data: {
-                    message: "hello vue"
+                    message: "hello vue",
+                    count: 0
                 },
                 methods: {
                     changeMessage() {
                         this.message = event.target.value
+                    },
+                    addTwo(counts) {
+                        this.count += counts
                     }
+
                 }
             })
         </script>
