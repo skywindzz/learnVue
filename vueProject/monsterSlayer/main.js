@@ -8,21 +8,16 @@ new Vue ({
     },
 
     methods: {
-        newGame: function () {
-            this.gameRunning = true,
-            this.monsterHealth = 100,
-            this.playerHealth = 100
-        },
         startNewGame() {
                 this.playerHealth = 100,
                 this.monsterHealth = 100,
                 this.gameRunning = true,
-                this.turns = []
+                this.turns = [];
         },
-        calculateDamage: function(min, max) {
+        calculateDamage(min, max) {
             return Math.max(Math.floor((Math.random() * 10 + 1)), min);
         },
-        attack: function () {
+        attack() {
                 let playerDamage = this.calculateDamage(3, 10);
                 this.monsterHealth -= playerDamage;
                 this.turns.unshift({
@@ -57,7 +52,7 @@ new Vue ({
             }
         },
 
-        specialAttack: function () {
+        specialAttack() {
             let playerDamage = this.calculateDamage(10, 15);
             this.monsterHealth -= playerDamage;
             this.turns.unshift({
@@ -103,9 +98,6 @@ new Vue ({
             });
             this.playerHealth -= monsterDamage;
             this.checkWin();
-        },
-        displayLog() {
-
         }
     }
-})
+});
