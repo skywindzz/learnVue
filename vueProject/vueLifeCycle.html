@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>LifeCycle hooks</title>
+</head>
+    <div id="app">
+        {{title}}
+        <button @click="title= 'hey'">click me</button>
+        <button @click="destroy"></button>
+    </div>
+<body>
+    
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                title: 'hello'
+            },
+            beforeCreate: function() {
+                console.log('beforeCreate()');
+            },
+            created: function() {
+                console.log('created()');
+            },
+            beforeMount: function() {
+                console.log('beforeMount()');
+            },
+            mounted: function() {
+                console.log('mounted()');
+            },
+            beforeUpdate: function() {
+                console.log('beforeUpdate()');
+            },
+            updated: function() {
+                console.log('updated()');
+            },
+            beforeDestroy: function() {
+                console.log('beforeDestroy()');
+            },
+            destroyed: function () {
+                console.log('destroyed()');
+            },
+            methods: {
+                destroy() {
+                   this.$destroy();
+                }
+            }
+        })
+    </script>
+</body>
+</html>
