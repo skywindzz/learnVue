@@ -19,8 +19,8 @@
         },
 
         created() {
-             eventBus.$on('ageWasEdited',(age)=> {
-                this.myAge = age
+             eventBus.$on('ageWasEdited',age=> {
+                this.myAge = age;
             })
         },
 

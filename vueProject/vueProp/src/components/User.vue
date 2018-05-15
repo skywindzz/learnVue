@@ -24,7 +24,7 @@
     export default {
         data() {
             return {
-                name: 'Max ',
+                name: 'Max',
                 age: 39
             }
         },
