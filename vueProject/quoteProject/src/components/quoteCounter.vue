@@ -9,9 +9,9 @@
 
 <script>
     export default {
-       props: {
-           counter: Number
-       }
+        props: {
+            counter: Number
+        }
     }
 </script>
 

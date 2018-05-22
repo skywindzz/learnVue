@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <quote-counter @quoteAdded="addCounter" :counter="counter"></quote-counter>
-        <add-quote></add-quote>
+        <quote-counter :counter="counter"></quote-counter>
+        <add-quote :counter="counter" @newQuote="addCounter" ></add-quote>
         <quote-frame></quote-frame>
     </div>
 </template>
@@ -25,8 +25,13 @@
         },
 
         methods: {
-            addCounter() {
+            exe() {
+                console.log('here')
+            },
 
+            addCounter() {
+                this.counter++;
+                console.log("this exectued");
             }
         }
     }
