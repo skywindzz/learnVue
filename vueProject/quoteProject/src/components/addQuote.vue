@@ -4,7 +4,7 @@
         <input class="inputbox" type="text" v-model="quote">
     </div>
         <div class="addbutton">
-        <button @click="addQuote">add quote</button>
+        <button @click="addQuote(this.quote)">add quote</button>
     </div>
     </div>
     
@@ -13,7 +13,8 @@
 <script>
     export default {
         props: {
-            counter: Number
+            counter: Number,
+            quotes: Array
         },
 
         data() {
@@ -21,18 +22,17 @@
                 quote:''
             }
         },
+
         methods: {
+
             addQuote() {
                 if (this.counter < 10) {
-                    this.$emit('newQuote', this.counter, this.quote);
-                    this.insertQuote(this.quote); 
+                    this.$emit('addCounter', this.counter);
+                    this.$emit('insertQuote', this.quote);
                 } else {
-                    alert('Too many quotes!! please delete some quotes before adding')
+                    return alert('Too many quotes!! please delete some quotes before adding')
                 }
-            },
-
-            insertQuote(quote) {
-                console.log(quote)
+                return this.quote=""
             }
         }
     }

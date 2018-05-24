@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <quote-counter :counter="counter"></quote-counter>
-        <add-quote :counter="counter" @newQuote="addCounter" ></add-quote>
-        <quote-frame></quote-frame>
+        <add-quote :counter="counter" :quotes="quotes" @addCounter="addCounter" @insertQuote="quotes.push($event)" ></add-quote>
+        <quote-frame :quotes="quotes"></quote-frame>
     </div>
 </template>
 
@@ -20,7 +20,8 @@
 
         data() {
             return {
-                counter: 0
+                counter: 0,
+                quotes: []
             }
         },
 
