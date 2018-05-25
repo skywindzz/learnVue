@@ -1,7 +1,7 @@
 <template>
     <div>
-        <ul v-for="quote in quotes">
-            <li class="quote"> {{ quote }} </li>
+        <ul>
+            <li class="quote" v-for="(quote, index) in quotes" :key=index  @click="deleteQuote(index)"> {{ quote }} {{ index }} </li>
         </ul>
 
         <div class="info">info: Click on a quote to delete it</div>
@@ -11,7 +11,21 @@
 <script>
     export default {
         props: {
-            quotes: Array
+            quotes: Array,
+            couter: Number
+        },
+
+        data() {
+            return {
+                quoteSelected: null,
+            }
+        },
+
+        methods: {
+            deleteQuote(index) {
+                this.$emit('reduceCounter', this.counter)
+                this.quotes.splice(index,1);
+            }
         }
     }
 </script>

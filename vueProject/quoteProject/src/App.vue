@@ -2,7 +2,7 @@
     <div class="container">
         <quote-counter :counter="counter"></quote-counter>
         <add-quote :counter="counter" :quotes="quotes" @addCounter="addCounter" @insertQuote="quotes.push($event)" ></add-quote>
-        <quote-frame :quotes="quotes"></quote-frame>
+        <quote-frame :quotes="quotes" :counter="counter" @reduceCounter="reduceCounter"></quote-frame>
     </div>
 </template>
 
@@ -33,6 +33,10 @@
             addCounter() {
                 this.counter++;
                 console.log("this exectued");
+            },
+
+            reduceCounter() {
+                this.counter--;
             }
         }
     }
