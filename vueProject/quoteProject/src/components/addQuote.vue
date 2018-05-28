@@ -26,6 +26,9 @@
         methods: {
 
             addQuote() {
+                if (this.quote === "") {
+                    return alert('please enter a quote')
+                }
                 if (this.counter < 10) {
                     this.$emit('addCounter', this.counter);
                     this.$emit('insertQuote', this.quote);

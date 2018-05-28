@@ -1,9 +1,8 @@
 <template>
     <div>
-        <ul>
-            <li class="quote" v-for="(quote, index) in quotes" :key=index  @click="deleteQuote(index)"> {{ quote }} {{ index }} </li>
-        </ul>
-
+    <div class="frame">
+        <span class="quote" v-for="(quote, index) in quotes" :key=index  @click="deleteQuote(index)"> {{ quote }}  </span>
+    </div>
         <div class="info">info: Click on a quote to delete it</div>
     </div>
 </template>
@@ -30,14 +29,28 @@
     }
 </script>
 
-<style>
+<style scoped>
+    .frame {
+        display: flex;
+        justify-content:space-around;
+        width: 1000px;
+        flex-wrap: wrap;
+
+    }
+
     .info {
+        display: block;
         text-align: center;
         color: lightblue;
     }
 
     .quote {
-        border: 30px 15px;
-        border-color:lightskyblue
+        border-style: solid;
+        border-color:lightskyblue;
+        margin: 30px 20px 30px 20px;
+        padding: 30px 30px;
+        font-size: 2em;
     }
+    
+    
 </style>
