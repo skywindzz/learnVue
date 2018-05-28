@@ -1,11 +1,11 @@
 <template>
     <div>
-    <div class="quotesection">
-        <input class="inputbox" type="text" v-model="quote">
-    </div>
-        <div class="addbutton">
-        <button @click="addQuote(this.quote)">add quote</button>
-    </div>
+        <div class="quotesection">
+            <input class="inputbox" type="text" v-model="quote">
+        </div>
+            <div class="addbutton">
+            <button @click="addQuote(this.quote)" class="btn btn-primary">add quote</button>
+        </div>
     </div>
     
 </template>
@@ -45,6 +45,7 @@
     .quotesection {
         display: flex;
         justify-content: center;
+        margin-top: 100px;
     }
 
     .addbutton {

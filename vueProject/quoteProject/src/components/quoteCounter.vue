@@ -1,7 +1,8 @@
 <template>
     <div>
-        <span class="quoteadded">Quotes Added</span>
-        <div>
+        <p class="quoteadded">Quotes Added</p>
+        <div class="progress-bar" role="progress-bar" aria-valuenow="60" aria-valuemax="100"
+        :style="{width: (counter / 10) * 100 + '%'}">
             {{ counter }} / 10
         </div>
     </div>
