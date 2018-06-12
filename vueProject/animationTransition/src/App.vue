@@ -6,7 +6,13 @@
                 <hr>
                 <button class="btn btn-primary" @click="show = !show">show alert</button>
                 <br></br>
-                <div class="alert alert-info" v-if="show">info</div>
+                <transition name="fade">
+                    <div class="alert alert-info" v-if="show">info</div>
+                </transition>
+                <transition name="slide">
+                    <div class="alert alert-info" v-if="show">info</div>
+                </transition>
+                
             </div>
         </div>
     </div>
@@ -23,5 +29,54 @@
 </script>
 
 <style>
+    .fade-enter {
+        opacity: 0; /* beware that this only last 1 frame so opacity will return to 1 after a second */
+    }
 
+    .fade-enter-active {
+        transition: opacity 1s; 
+    }
+
+    .fade-leave {
+
+    }
+
+    .fade-leave-active {
+        transition: opacity 1s;
+        opacity: 0;
+    }
+
+    .slide-enter {
+       
+    }
+
+    .slide-enter-active {
+        animation: slide-in 1s ease-out forwards;
+    }
+
+    .slide-leave {
+
+    }
+
+    .slide-leave-active {
+       animation: slide-out 1s ease-out forwards;
+    }
+
+    @keyframes slide-in {
+        from {
+            transform: translateY(20px);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slide-out {
+        from {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(20px);
+        }
+    }
 </style>
