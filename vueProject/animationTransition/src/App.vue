@@ -7,9 +7,12 @@
                 <button class="btn btn-primary" @click="show = !show">show alert</button>
                 <br></br>
                 <transition name="fade">
+                    <div class="alert alert-info" v-show="show">info</div>
+                </transition>
+                <transition name="slide" type="animation">
                     <div class="alert alert-info" v-if="show">info</div>
                 </transition>
-                <transition name="slide">
+                <transition name="fade" appear>
                     <div class="alert alert-info" v-if="show">info</div>
                 </transition>
                 
@@ -22,7 +25,7 @@
     export default {
         data() {
             return {
-                show: false
+                show: true
             }
         }
     }
