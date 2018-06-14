@@ -9,10 +9,13 @@
                 <transition name="fade">
                     <div class="alert alert-info" v-show="show">info</div>
                 </transition>
-                <transition name="slide" type="animation">
+                <transition name="slide" type="animation" appear> <!--when you have transion and animation both on an element you can use type to specify which one to use animation or transition !-->
                     <div class="alert alert-info" v-if="show">info</div>
                 </transition>
-                <transition name="fade" appear>
+                <transition
+                    enter-active-class="animated bounce"
+                    leave-active-class="animated shake"
+                    >
                     <div class="alert alert-info" v-if="show">info</div>
                 </transition>
                 
@@ -55,6 +58,7 @@
 
     .slide-enter-active {
         animation: slide-in 1s ease-out forwards;
+        transition: opacity .5s;
     }
 
     .slide-leave {
@@ -63,6 +67,8 @@
 
     .slide-leave-active {
        animation: slide-out 1s ease-out forwards;
+       transition: opacity 3s;
+       opacity: 0;
     }
 
     @keyframes slide-in {
