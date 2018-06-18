@@ -27,6 +27,22 @@
                     <div class="alert alert-info" v-if="show" key="info">info</div>
                     <div class="alert alert-warning" v-else="!show" key="warning">warning</div>
                 </transition>
+                <hr>
+                <button class="btn btn-primary" @click="load = !load" >Load / Remove Element</button>
+                <br><br>
+                <transition
+                    @before-enter="beforeEnter"
+                    @enter="enter"
+                    @after-enter="afterEnter"
+                    @enter-cancelled="enterCancelled"
+                    
+                    @before-leave="beforeLeave"
+                    @leave="leave"
+                    @after-leave="afterLeave"
+                    @leave-cancelled="leaveCancelled"
+                    :css="false">  <!-- this tells vue.js do not look for css classes and immediately execute the javascript hooks this will save some time !-->
+                    <div style="width: 100px; height: 100px; backgroundColor: lightgreen;" v-if="load"></div>
+                </transition>
             </div>
         </div>
     </div>
@@ -37,8 +53,39 @@
         data() {
             return {
                 show: true,
-                alertAnimation: 'fade'
+                alertAnimation: 'fade',
+                load: false
             }
+        },
+        methods: {
+            beforeEnter(el) {
+                console.log('beforeEnter')
+            },
+            enter(el, done) {
+                console.log('enter');
+                done(); //because you are using javascript to animate execute done function is necessary in case the code is asynchronous
+                //you don't need to use done if you are using css animations since css animation already have timing included
+            },
+            afterEnter(el) {
+                console.log('afterEnter')
+            },
+            enterCancelled(el) {
+                console.log("enterCancelled");
+            },
+            beforeLeave(el) {
+                console.log('beforeLeave');
+            },
+            leave(el, done) {
+                console.log('leave');
+                done();
+            },
+            afterLeave(el) {
+                console.log('afterLeave');
+            },
+            leaveCancelled(el) {
+                console.log('leaveCancelled');
+            }
+
         }
     }
 </script>
