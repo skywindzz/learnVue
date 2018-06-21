@@ -41,7 +41,7 @@
                     @after-leave="afterLeave"
                     @leave-cancelled="leaveCancelled"
                     :css="false">  <!-- this tells vue.js do not look for css classes and immediately execute the javascript hooks this will save some time !-->
-                    <div style="width: 100px; height: 100px; backgroundColor: lightgreen;" v-if="load"></div>
+                    <div style="width: 300px; height: 100px; backgroundColor: lightgreen;" v-if="load"></div>
                 </transition>
             </div>
         </div>
@@ -54,17 +54,29 @@
             return {
                 show: true,
                 alertAnimation: 'fade',
-                load: false
+                load: false,
+                elementWidth: 100
             }
         },
         methods: {
             beforeEnter(el) {
-                console.log('beforeEnter')
+                console.log('beforeEnter');
+                this.elementWidth = 100;
+                el.style.width = this.elementWidth + 'px';
             },
             enter(el, done) {
                 console.log('enter');
-                done(); //because you are using javascript to animate execute done function is necessary in case the code is asynchronous
+                let round = 1;
+                const interval = setInterval(()=> {
+                    el.style.width = (this.elementWidth + round * 10) + 'px';
+                    round++;
+                    if (round > 20) {
+                        clearInterval(interval);
+                        done(); //because you are using javascript to animate execute done function is necessary in case the code is asynchronous
                 //you don't need to use done if you are using css animations since css animation already have timing included
+                    }
+                }, 20)
+                
             },
             afterEnter(el) {
                 console.log('afterEnter')
@@ -74,10 +86,21 @@
             },
             beforeLeave(el) {
                 console.log('beforeLeave');
+                this.elementWidth = 300;
+                el.style.width = this.elementWidth + 'px';
             },
             leave(el, done) {
                 console.log('leave');
-                done();
+                 let round = 1;
+                const interval = setInterval(()=> {
+                    el.style.width = (this.elementWidth - round * 10) + 'px';
+                    round++;
+                    if (round > 20) {
+                        clearInterval(interval);
+                        done(); //because you are using javascript to animate execute done function is necessary in case the code is asynchronous
+                //you don't need to use done if you are using css animations since css animation already have timing included
+                    }
+                }, 20);
             },
             afterLeave(el) {
                 console.log('afterLeave');
