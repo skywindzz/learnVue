@@ -43,21 +43,38 @@
                     :css="false">  <!-- this tells vue.js do not look for css classes and immediately execute the javascript hooks this will save some time !-->
                     <div style="width: 300px; height: 100px; backgroundColor: lightgreen;" v-if="load"></div>
                 </transition>
+                <hr>
+                <button class="btn btn-primary"
+                    @click="selectedComponent == 'app-success-alert' ? selectedComponent = 'app-danger-alert' : selectedComponent = 'app-success-alert'">Toggle components</button>
+                <br><br>
+                <transition name="fade" mode="out-in">
+                    <component :is="selectedComponent"></component>
+                </transition>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import DangerAlert from "./dangerAlert.vue";
+    import SuccessAlert from "./successAlert.vue";
+
     export default {
         data() {
             return {
                 show: true,
                 alertAnimation: 'fade',
                 load: false,
-                elementWidth: 100
+                elementWidth: 100,
+                selectedComponent: 'app-success-alert'
             }
         },
+        
+        components: {
+            appDangerAlert: DangerAlert, //beware of the camel case, this tells vue.js where to seperate when using - on tags ex. appDangerAlert becomes app-danger-alert
+            appSuccessAlert: SuccessAlert
+        },
+
         methods: {
             beforeEnter(el) {
                 console.log('beforeEnter');
