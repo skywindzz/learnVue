@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueResrouce from 'vue-resource';
 import App from './App.vue';
 
-Vue.use(VueResource);
+Vue.use(VueResrouce);
 
 new Vue({
   el: '#app',
